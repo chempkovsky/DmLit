@@ -1,0 +1,29 @@
+
+<app-lit-genre-view-lform 
+    [caption]="caption" 
+    (selected-row)="onSelectedRow($event)"
+    [hidden-filter] = "hiddenFilter" [show-filter]="showFilter"
+    [can-add]= "canAdd" [can-update]= "canUpdate" [can-delete]= "canDelete"
+    [cont-menu-items]="contMenuItems"
+    (on-cont-menu-item-click)="onContMenuItemClicked($event)"
+    [max-height]="maxHeight"  
+    [filter-max-height]="filterMaxHeight"  
+
+></app-lit-genre-view-lform>
+<div fxLayout>
+        <mat-form-field [appearance]="appearance" fxFlex="100%">
+            <mat-label>{{ selectedDetailCaption }}</mat-label>
+            <mat-select (selectionChange)="onSelectionChanged($event)" [value]="dtlVw">
+                <mat-option *ngFor="let aVal of  detailViewSelModels;" [value]="aVal">{{ aVal.caption }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+</div>
+<app-lit-manuscript-view-lform *ngIf="detailViewName == 'LitManuscriptView'"
+    (selected-row)="onDetailSelectedRow($event)"
+    [hidden-filter] = "hiddenDetailFilter" [show-filter]="showDetailFilter"
+    [can-add]= "canDetailAdd" [can-update]= "canDetailUpdate" [can-delete]= "canDetailDelete"
+    [max-height]="maxHeight"  
+    [filter-max-height]="filterMaxHeight"  
+></app-lit-manuscript-view-lform>
+
+

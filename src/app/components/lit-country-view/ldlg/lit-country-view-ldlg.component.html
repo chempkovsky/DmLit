@@ -1,0 +1,13 @@
+
+<h3 mat-dialog-title>{{data.title}}</h3>
+<div mat-dialog-content>
+    <app-lit-country-view-lform (selected-row)="onSelectedRow($event)"
+    [hidden-filter] = "data.hiddenFilter" [show-filter]="data.showFilter"
+    [can-add]= "data.canAdd" [can-update]= "data.canUpdate" [can-delete]= "data.canDelete"
+    ></app-lit-country-view-lform>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()" cdkFocusInitial>Cancel</button>
+  <button mat-button (click)="onOk()">Ok</button>
+</div>
+

@@ -1,0 +1,33 @@
+
+
+<div class="dashboard-grid-container">
+  <h2 class="mat-h2">Dashboard for RPublisher</h2>
+<!-- please remove "style" this was added for demonstration purposes only -->
+  <mat-grid-list cols="2" rowHeight="390px" >
+
+    <mat-grid-tile [colspan]="colSpan[0][0]" [rowspan]="rowSpan[0][0]" *ngIf="isVisible[0]">
+      <div class="dashboard-item-container">
+        <mat-card>
+            <app-lit-publisher-view-lform
+                [cont-menu-items]="contMenuItems[0]"
+                (on-cont-menu-item-click)="onContMenuItemClicked($event)"
+                [max-height]="maxHeight[0][0]"  
+                [filter-max-height]="filterMaxHeight[0][0]"  
+            >
+            </app-lit-publisher-view-lform>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="colSpan[1][0]" [rowspan]="rowSpan[1][0]" *ngIf="isVisible[1]">
+          <div class="dashboard-item-container">
+            <mat-card>
+                <router-outlet (activate)="onActivate($event)"  (deactivate)= "onDeActivate($event)" ></router-outlet>
+            </mat-card>
+          </div>
+    </mat-grid-tile>
+
+
+  </mat-grid-list>
+</div>
+

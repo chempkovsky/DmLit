@@ -1,0 +1,19 @@
+
+
+<app-lit-language-view-sform
+    [caption]="caption" 
+    (on-back-btn)="onBackBtn($event)"
+    [show-back-btn]="showBackBtn"
+    [row-commands]="rowMenuItemsData" 
+    [table-commands]="tableMenuItemsData"
+    [show-filter]="showFilter"
+    [hidden-filter] ="hiddenFilter"
+    (on-row-command)="rowCommand($event)"
+    (on-table-command)="tableCommand($event)"
+    (apply-filter)="applyFilter($event)"
+    [cont-menu-items]="contMenuItems"
+    (on-cont-menu-item-click)="onContMenuItemClicked($event)"
+    [max-height]="maxHeight"  
+    [filter-max-height]="filterMaxHeight"  
+ ></app-lit-language-view-sform>
+

@@ -1,0 +1,298 @@
+
+     <div fxLayout="row" fxLayoutAlign="flex-end space-around" style="margin-bottom: 12px;"> 
+        <label fxFlex fxLayoutAlign="flex-start space-around">{{caption}}</label>
+        <ng-template ngFor let-item [ngForOf]="contMenuItems">
+            <span fxFlex="1%"></span>  
+            <button mat-icon-button (click)="onContMenuItemClicked(item)" 
+                [matTooltip]="item.caption"> 
+                <mat-icon  [color]="item.iconColor" >{{item.iconName}}</mat-icon>
+            </button>     
+        </ng-template>            
+        <span fxFlex="1%"></span>
+     </div> 
+<div  *ngIf="eformMode == 1" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the Manuscript</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="manuscriptId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['manuscriptId'].invalid">{{getErrorMessage(mainFormGroup.controls['manuscriptId'])}}</mat-error>
+                        <mat-hint align="end">Id of the Manuscript</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Manuscript Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="manuscriptTitle">
+                        <mat-error *ngIf="mainFormGroup.controls['manuscriptTitle'].invalid">{{getErrorMessage(mainFormGroup.controls['manuscriptTitle'])}}</mat-error>
+                        <mat-hint align="end">Enter Manuscript Title</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Completion Date</mat-label>
+                        <input matInput [matDatepicker]="apicker0" formControlName="completionDate">
+                        <mat-datepicker-toggle matSuffix [for]="apicker0"></mat-datepicker-toggle>
+                        <mat-datepicker #apicker0></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['completionDate'].invalid">{{getErrorMessage(mainFormGroup.controls['completionDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Completion Date</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Beginning Date</mat-label>
+                        <input matInput [matDatepicker]="apicker1" formControlName="beginningDate">
+                        <mat-datepicker-toggle matSuffix [for]="apicker1"></mat-datepicker-toggle>
+                        <mat-datepicker #apicker1></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['beginningDate'].invalid">{{getErrorMessage(mainFormGroup.controls['beginningDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Beginning Date</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                <input type="hidden" formControlName="authorIdRef">
+                <input type="hidden" formControlName="genreIdRef">
+                <input type="hidden" formControlName="dialectIdRef">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>First Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="aFirstName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['aFirstName'].invalid">{{getErrorMessage(mainFormGroup.controls['aFirstName'])}}</mat-error>
+                        <mat-hint align="end">Enter First Name</mat-hint>
+                    </mat-form-field>
+
+                <input type="hidden"  formControlName="aLastName">
+                <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                    <mat-label>Last Name</mat-label>
+                    <mat-select [formControl]="aLastNameCmbCntrl">
+                        <mat-option *ngFor="let aVal of aLastNameCmbCntrlVals;" [value]="aVal">{{ aVal.lastName }}</mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="aLastNameCmbCntrl.invalid">{{getErrorMessage(aLastNameCmbCntrl)}}</mat-error> -->
+                    <mat-error *ngIf="aLastNameCmbCntrl.invalid">{{getErrorMessage(mainFormGroup.controls['aLastName'])}}</mat-error>
+                    <mat-hint align="end">Enter Last Name</mat-hint>
+                </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Date</mat-label>
+                        <input matInput [matDatepicker]="apicker2" formControlName="aBirthDate" [readonly]="true">
+                        <mat-datepicker-toggle matSuffix [for]="apicker2" disabled></mat-datepicker-toggle>
+                        <mat-datepicker #apicker2></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['aBirthDate'].invalid">{{getErrorMessage(mainFormGroup.controls['aBirthDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Date</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="aCCountryName" [readonly]="true">
+                        <button color="primary" mat-icon-button matSuffix (click)="aCCountryNameSrchClck()" [disabled]="aCCountryNameBttnDsnbl"  >
+                          <mat-icon>search</mat-icon>
+                        </button>
+                        <mat-error *ngIf="mainFormGroup.controls['aCCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['aCCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Country</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+
+                <input type="hidden"  formControlName="gGenreName">
+                <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                    <mat-label>Name of the genre</mat-label>
+                    <mat-select [formControl]="gGenreNameCmbCntrl">
+                        <mat-option *ngFor="let aVal of gGenreNameCmbCntrlVals;" [value]="aVal">{{ aVal.genreName }}</mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="gGenreNameCmbCntrl.invalid">{{getErrorMessage(gGenreNameCmbCntrl)}}</mat-error> -->
+                    <mat-error *ngIf="gGenreNameCmbCntrl.invalid">{{getErrorMessage(mainFormGroup.controls['gGenreName'])}}</mat-error>
+                    <mat-hint align="end">Name of the genre</mat-hint>
+                </mat-form-field>
+
+                <input type="hidden"  formControlName="dDialectName">
+                <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                    <mat-label>Dialect Name</mat-label>
+                    <mat-select [formControl]="dDialectNameCmbCntrl">
+                        <mat-option *ngFor="let aVal of dDialectNameCmbCntrlVals;" [value]="aVal">{{ aVal.dialectName }}</mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="dDialectNameCmbCntrl.invalid">{{getErrorMessage(dDialectNameCmbCntrl)}}</mat-error> -->
+                    <mat-error *ngIf="dDialectNameCmbCntrl.invalid">{{getErrorMessage(mainFormGroup.controls['dDialectName'])}}</mat-error>
+                    <mat-hint align="end">Enter Dialect Name</mat-hint>
+                </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Dialect Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="dCCountryName" [readonly]="true">
+                        <button color="primary" mat-icon-button matSuffix (click)="dCCountryNameSrchClck()" [disabled]="dCCountryNameBttnDsnbl"  >
+                          <mat-icon>search</mat-icon>
+                        </button>
+                        <mat-error *ngIf="mainFormGroup.controls['dCCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['dCCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Dialect Country</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 2" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the Manuscript</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="manuscriptId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['manuscriptId'].invalid">{{getErrorMessage(mainFormGroup.controls['manuscriptId'])}}</mat-error>
+                        <mat-hint align="end">Id of the Manuscript</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Manuscript Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="manuscriptTitle">
+                        <mat-error *ngIf="mainFormGroup.controls['manuscriptTitle'].invalid">{{getErrorMessage(mainFormGroup.controls['manuscriptTitle'])}}</mat-error>
+                        <mat-hint align="end">Enter Manuscript Title</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Completion Date</mat-label>
+                        <input matInput [matDatepicker]="apicker3" formControlName="completionDate">
+                        <mat-datepicker-toggle matSuffix [for]="apicker3"></mat-datepicker-toggle>
+                        <mat-datepicker #apicker3></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['completionDate'].invalid">{{getErrorMessage(mainFormGroup.controls['completionDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Completion Date</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Beginning Date</mat-label>
+                        <input matInput [matDatepicker]="apicker4" formControlName="beginningDate">
+                        <mat-datepicker-toggle matSuffix [for]="apicker4"></mat-datepicker-toggle>
+                        <mat-datepicker #apicker4></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['beginningDate'].invalid">{{getErrorMessage(mainFormGroup.controls['beginningDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Beginning Date</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                <input type="hidden" formControlName="authorIdRef">
+                <input type="hidden" formControlName="genreIdRef">
+                <input type="hidden" formControlName="dialectIdRef">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>First Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="aFirstName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['aFirstName'].invalid">{{getErrorMessage(mainFormGroup.controls['aFirstName'])}}</mat-error>
+                        <mat-hint align="end">Enter First Name</mat-hint>
+                    </mat-form-field>
+
+                <input type="hidden"  formControlName="aLastName">
+                <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                    <mat-label>Last Name</mat-label>
+                    <mat-select [formControl]="aLastNameCmbCntrl">
+                        <mat-option *ngFor="let aVal of aLastNameCmbCntrlVals;" [value]="aVal">{{ aVal.lastName }}</mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="aLastNameCmbCntrl.invalid">{{getErrorMessage(aLastNameCmbCntrl)}}</mat-error> -->
+                    <mat-error *ngIf="aLastNameCmbCntrl.invalid">{{getErrorMessage(mainFormGroup.controls['aLastName'])}}</mat-error>
+                    <mat-hint align="end">Enter Last Name</mat-hint>
+                </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Date</mat-label>
+                        <input matInput [matDatepicker]="apicker5" formControlName="aBirthDate" [readonly]="true">
+                        <mat-datepicker-toggle matSuffix [for]="apicker5" disabled></mat-datepicker-toggle>
+                        <mat-datepicker #apicker5></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['aBirthDate'].invalid">{{getErrorMessage(mainFormGroup.controls['aBirthDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Date</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="aCCountryName" [readonly]="true">
+                        <button color="primary" mat-icon-button matSuffix (click)="aCCountryNameSrchClck()" [disabled]="aCCountryNameBttnDsnbl"  >
+                          <mat-icon>search</mat-icon>
+                        </button>
+                        <mat-error *ngIf="mainFormGroup.controls['aCCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['aCCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Country</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+
+                <input type="hidden"  formControlName="gGenreName">
+                <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                    <mat-label>Name of the genre</mat-label>
+                    <mat-select [formControl]="gGenreNameCmbCntrl">
+                        <mat-option *ngFor="let aVal of gGenreNameCmbCntrlVals;" [value]="aVal">{{ aVal.genreName }}</mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="gGenreNameCmbCntrl.invalid">{{getErrorMessage(gGenreNameCmbCntrl)}}</mat-error> -->
+                    <mat-error *ngIf="gGenreNameCmbCntrl.invalid">{{getErrorMessage(mainFormGroup.controls['gGenreName'])}}</mat-error>
+                    <mat-hint align="end">Name of the genre</mat-hint>
+                </mat-form-field>
+
+                <input type="hidden"  formControlName="dDialectName">
+                <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                    <mat-label>Dialect Name</mat-label>
+                    <mat-select [formControl]="dDialectNameCmbCntrl">
+                        <mat-option *ngFor="let aVal of dDialectNameCmbCntrlVals;" [value]="aVal">{{ aVal.dialectName }}</mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="dDialectNameCmbCntrl.invalid">{{getErrorMessage(dDialectNameCmbCntrl)}}</mat-error> -->
+                    <mat-error *ngIf="dDialectNameCmbCntrl.invalid">{{getErrorMessage(mainFormGroup.controls['dDialectName'])}}</mat-error>
+                    <mat-hint align="end">Enter Dialect Name</mat-hint>
+                </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Dialect Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="dCCountryName" [readonly]="true">
+                        <button color="primary" mat-icon-button matSuffix (click)="dCCountryNameSrchClck()" [disabled]="dCCountryNameBttnDsnbl"  >
+                          <mat-icon>search</mat-icon>
+                        </button>
+                        <mat-error *ngIf="mainFormGroup.controls['dCCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['dCCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Dialect Country</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 3" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the Manuscript</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="manuscriptId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['manuscriptId'].invalid">{{getErrorMessage(mainFormGroup.controls['manuscriptId'])}}</mat-error>
+                        <mat-hint align="end">Id of the Manuscript</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Manuscript Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="manuscriptTitle" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['manuscriptTitle'].invalid">{{getErrorMessage(mainFormGroup.controls['manuscriptTitle'])}}</mat-error>
+                        <mat-hint align="end">Enter Manuscript Title</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Completion Date</mat-label>
+                        <input matInput [matDatepicker]="apicker6" formControlName="completionDate" [readonly]="true">
+                        <mat-datepicker-toggle matSuffix [for]="apicker6" disabled></mat-datepicker-toggle>
+                        <mat-datepicker #apicker6></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['completionDate'].invalid">{{getErrorMessage(mainFormGroup.controls['completionDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Completion Date</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Beginning Date</mat-label>
+                        <input matInput [matDatepicker]="apicker7" formControlName="beginningDate" [readonly]="true">
+                        <mat-datepicker-toggle matSuffix [for]="apicker7" disabled></mat-datepicker-toggle>
+                        <mat-datepicker #apicker7></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['beginningDate'].invalid">{{getErrorMessage(mainFormGroup.controls['beginningDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Beginning Date</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                <input type="hidden" formControlName="authorIdRef">
+                <input type="hidden" formControlName="genreIdRef">
+                <input type="hidden" formControlName="dialectIdRef">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>First Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="aFirstName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['aFirstName'].invalid">{{getErrorMessage(mainFormGroup.controls['aFirstName'])}}</mat-error>
+                        <mat-hint align="end">Enter First Name</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Last Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="aLastName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['aLastName'].invalid">{{getErrorMessage(mainFormGroup.controls['aLastName'])}}</mat-error>
+                        <mat-hint align="end">Enter Last Name</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Date</mat-label>
+                        <input matInput [matDatepicker]="apicker8" formControlName="aBirthDate" [readonly]="true">
+                        <mat-datepicker-toggle matSuffix [for]="apicker8" disabled></mat-datepicker-toggle>
+                        <mat-datepicker #apicker8></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['aBirthDate'].invalid">{{getErrorMessage(mainFormGroup.controls['aBirthDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Date</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="aCCountryName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['aCCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['aCCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Country</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Name of the genre</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="gGenreName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['gGenreName'].invalid">{{getErrorMessage(mainFormGroup.controls['gGenreName'])}}</mat-error>
+                        <mat-hint align="end">Name of the genre</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Dialect Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="dDialectName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['dDialectName'].invalid">{{getErrorMessage(mainFormGroup.controls['dDialectName'])}}</mat-error>
+                        <mat-hint align="end">Enter Dialect Name</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Dialect Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="dCCountryName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['dCCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['dCCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Dialect Country</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+

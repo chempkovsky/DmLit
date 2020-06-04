@@ -1,0 +1,113 @@
+
+     <div fxLayout="row" fxLayoutAlign="flex-end space-around" style="margin-bottom: 12px;"> 
+        <label fxFlex fxLayoutAlign="flex-start space-around">{{caption}}</label>
+        <ng-template ngFor let-item [ngForOf]="contMenuItems">
+            <span fxFlex="1%"></span>  
+            <button mat-icon-button (click)="onContMenuItemClicked(item)" 
+                [matTooltip]="item.caption"> 
+                <mat-icon  [color]="item.iconColor" >{{item.iconName}}</mat-icon>
+            </button>     
+        </ng-template>            
+        <span fxFlex="1%"></span>
+     </div> 
+<div  *ngIf="eformMode == 1" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>User Id</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="userId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['userId'].invalid">{{getErrorMessage(mainFormGroup.controls['userId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>User Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="uUserName" [readonly]="true">
+                        <button color="primary" mat-icon-button matSuffix (click)="uUserNameSrchClck()" [disabled]="uUserNameBttnDsnbl"  >
+                          <mat-icon>search</mat-icon>
+                        </button>
+                        <mat-error *ngIf="mainFormGroup.controls['uUserName'].invalid">{{getErrorMessage(mainFormGroup.controls['uUserName'])}}</mat-error>
+                        <mat-hint align="end">Enter User Name</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Role Id</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="roleId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['roleId'].invalid">{{getErrorMessage(mainFormGroup.controls['roleId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id</mat-hint>
+                    </mat-form-field>
+
+                <input type="hidden"  formControlName="rName">
+                <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                    <mat-label>Role Name</mat-label>
+                    <mat-select [formControl]="rNameCmbCntrl">
+                        <mat-option *ngFor="let aVal of rNameCmbCntrlVals;" [value]="aVal">{{ aVal.name }}</mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="rNameCmbCntrl.invalid">{{getErrorMessage(rNameCmbCntrl)}}</mat-error> -->
+                    <mat-error *ngIf="rNameCmbCntrl.invalid">{{getErrorMessage(mainFormGroup.controls['rName'])}}</mat-error>
+                    <mat-hint align="end">Enter RoleName</mat-hint>
+                </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 2" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>User Id</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="userId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['userId'].invalid">{{getErrorMessage(mainFormGroup.controls['userId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>User Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="uUserName" [readonly]="true">
+                        <button color="primary" mat-icon-button matSuffix (click)="uUserNameSrchClck()" [disabled]="uUserNameBttnDsnbl"  >
+                          <mat-icon>search</mat-icon>
+                        </button>
+                        <mat-error *ngIf="mainFormGroup.controls['uUserName'].invalid">{{getErrorMessage(mainFormGroup.controls['uUserName'])}}</mat-error>
+                        <mat-hint align="end">Enter User Name</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Role Id</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="roleId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['roleId'].invalid">{{getErrorMessage(mainFormGroup.controls['roleId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id</mat-hint>
+                    </mat-form-field>
+
+                <input type="hidden"  formControlName="rName">
+                <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                    <mat-label>Role Name</mat-label>
+                    <mat-select [formControl]="rNameCmbCntrl">
+                        <mat-option *ngFor="let aVal of rNameCmbCntrlVals;" [value]="aVal">{{ aVal.name }}</mat-option>
+                    </mat-select>
+                    <!-- <mat-error *ngIf="rNameCmbCntrl.invalid">{{getErrorMessage(rNameCmbCntrl)}}</mat-error> -->
+                    <mat-error *ngIf="rNameCmbCntrl.invalid">{{getErrorMessage(mainFormGroup.controls['rName'])}}</mat-error>
+                    <mat-hint align="end">Enter RoleName</mat-hint>
+                </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 3" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>User Id</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="userId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['userId'].invalid">{{getErrorMessage(mainFormGroup.controls['userId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>User Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="uUserName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['uUserName'].invalid">{{getErrorMessage(mainFormGroup.controls['uUserName'])}}</mat-error>
+                        <mat-hint align="end">Enter User Name</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Role Id</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="roleId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['roleId'].invalid">{{getErrorMessage(mainFormGroup.controls['roleId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="24" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Role Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="rName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['rName'].invalid">{{getErrorMessage(mainFormGroup.controls['rName'])}}</mat-error>
+                        <mat-hint align="end">Enter RoleName</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+

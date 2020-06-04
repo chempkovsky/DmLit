@@ -1,0 +1,19 @@
+
+
+<app-lit-book-view-sform
+    [caption]="caption" 
+    [row-commands]="rowMenuItemsData" 
+    [table-commands]="tableMenuItemsData"
+    [show-filter]="showFilter"
+    [show-add-flt-item]="showAddFltItem" 
+    [hidden-filter] ="hiddenFilter"
+    (on-row-command)="rowCommand($event)"
+    (on-table-command)="tableCommand($event)"
+    (selected-row)="onSelectRow($event)"
+    [cont-menu-items]="contMenuItems"
+    (on-cont-menu-item-click)="onContMenuItemClicked($event)"
+    [max-height]="maxHeight"  
+    [filter-max-height]="filterMaxHeight"  
+
+ ></app-lit-book-view-sform>
+

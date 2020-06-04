@@ -1,0 +1,30 @@
+
+
+<mat-tab-group>
+    
+    <mat-tab label="Models">
+        <app-aspnetmodel-view-checkedmodel 
+            [max-height]="maxHeight"  
+            [filter-max-height]="filterMaxHeight"  
+            [show-filter]="showFilter"
+            [show-add-flt-item]="showAddFltItem"
+
+            [permissions]="permissions"
+            [is-disabled]="isDisabled"
+        ></app-aspnetmodel-view-checkedmodel>
+    </mat-tab>
+    
+    <mat-tab label="Dashboards">
+        <app-aspnetdashboard-view-checkeddashboard 
+            [max-height]="maxHeight"  
+            [filter-max-height]="filterMaxHeight"  
+            [show-filter]="showFilter"
+            [show-add-flt-item]="showAddFltItem"
+
+            [permissions]="permissions"
+            [is-disabled]="isDisabled"
+        ></app-aspnetdashboard-view-checkeddashboard>
+    </mat-tab>
+    
+</mat-tab-group>
+

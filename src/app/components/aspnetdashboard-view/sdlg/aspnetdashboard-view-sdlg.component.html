@@ -1,0 +1,16 @@
+
+<h3 mat-dialog-title>{{data.title}}</h3>
+<div mat-dialog-content>
+    <app-aspnetdashboard-view-sform 
+        (selected-row)="onSelectedRow($event)"
+        [hidden-filter] = "data.hiddenFilter" 
+        [show-filter]="data.showFilter"
+        [max-height]="data.maxHeight"
+        [filter-max-height]="data.filterMaxHeight"
+    ></app-aspnetdashboard-view-sform>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()" cdkFocusInitial>Cancel</button>
+  <button mat-button (click)="onOk()">Ok</button>
+</div>
+

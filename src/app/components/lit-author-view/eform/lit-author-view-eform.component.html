@@ -1,0 +1,160 @@
+
+     <div fxLayout="row" fxLayoutAlign="flex-end space-around" style="margin-bottom: 12px;"> 
+        <label fxFlex fxLayoutAlign="flex-start space-around">{{caption}}</label>
+        <ng-template ngFor let-item [ngForOf]="contMenuItems">
+            <span fxFlex="1%"></span>  
+            <button mat-icon-button (click)="onContMenuItemClicked(item)" 
+                [matTooltip]="item.caption"> 
+                <mat-icon  [color]="item.iconColor" >{{item.iconName}}</mat-icon>
+            </button>     
+        </ng-template>            
+        <span fxFlex="1%"></span>
+     </div> 
+<div  *ngIf="eformMode == 1" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the Author</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="authorId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['authorId'].invalid">{{getErrorMessage(mainFormGroup.controls['authorId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id of the Author</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>First Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="firstName">
+                        <mat-error *ngIf="mainFormGroup.controls['firstName'].invalid">{{getErrorMessage(mainFormGroup.controls['firstName'])}}</mat-error>
+                        <mat-hint align="end">Enter First Name</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Last Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="lastName">
+                        <mat-error *ngIf="mainFormGroup.controls['lastName'].invalid">{{getErrorMessage(mainFormGroup.controls['lastName'])}}</mat-error>
+                        <mat-hint align="end">Enter Last Name</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Date</mat-label>
+                        <input matInput [matDatepicker]="apicker0" formControlName="birthDate">
+                        <mat-datepicker-toggle matSuffix [for]="apicker0"></mat-datepicker-toggle>
+                        <mat-datepicker #apicker0></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['birthDate'].invalid">{{getErrorMessage(mainFormGroup.controls['birthDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Date</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Date</mat-label>
+                        <input matInput [matDatepicker]="apicker1" formControlName="deathDate">
+                        <mat-datepicker-toggle matSuffix [for]="apicker1"></mat-datepicker-toggle>
+                        <mat-datepicker #apicker1></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['deathDate'].invalid">{{getErrorMessage(mainFormGroup.controls['deathDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Date</mat-hint>
+                    </mat-form-field>
+                <input type="hidden" formControlName="iso3CntrRef">
+                <input type="hidden" formControlName="iso2CntrRef">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="cCountryName" [readonly]="true">
+                        <button color="primary" mat-icon-button matSuffix (click)="cCountryNameSrchClck()" [disabled]="cCountryNameBttnDsnbl"  >
+                          <mat-icon>search</mat-icon>
+                        </button>
+                        <mat-error *ngIf="mainFormGroup.controls['cCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['cCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Country</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 2" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the Author</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="authorId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['authorId'].invalid">{{getErrorMessage(mainFormGroup.controls['authorId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id of the Author</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>First Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="firstName">
+                        <mat-error *ngIf="mainFormGroup.controls['firstName'].invalid">{{getErrorMessage(mainFormGroup.controls['firstName'])}}</mat-error>
+                        <mat-hint align="end">Enter First Name</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Last Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="lastName">
+                        <mat-error *ngIf="mainFormGroup.controls['lastName'].invalid">{{getErrorMessage(mainFormGroup.controls['lastName'])}}</mat-error>
+                        <mat-hint align="end">Enter Last Name</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Date</mat-label>
+                        <input matInput [matDatepicker]="apicker2" formControlName="birthDate">
+                        <mat-datepicker-toggle matSuffix [for]="apicker2"></mat-datepicker-toggle>
+                        <mat-datepicker #apicker2></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['birthDate'].invalid">{{getErrorMessage(mainFormGroup.controls['birthDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Date</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Date</mat-label>
+                        <input matInput [matDatepicker]="apicker3" formControlName="deathDate">
+                        <mat-datepicker-toggle matSuffix [for]="apicker3"></mat-datepicker-toggle>
+                        <mat-datepicker #apicker3></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['deathDate'].invalid">{{getErrorMessage(mainFormGroup.controls['deathDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Date</mat-hint>
+                    </mat-form-field>
+                <input type="hidden" formControlName="iso3CntrRef">
+                <input type="hidden" formControlName="iso2CntrRef">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="cCountryName" [readonly]="true">
+                        <button color="primary" mat-icon-button matSuffix (click)="cCountryNameSrchClck()" [disabled]="cCountryNameBttnDsnbl"  >
+                          <mat-icon>search</mat-icon>
+                        </button>
+                        <mat-error *ngIf="mainFormGroup.controls['cCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['cCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Country</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 3" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the Author</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="authorId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['authorId'].invalid">{{getErrorMessage(mainFormGroup.controls['authorId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id of the Author</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>First Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="firstName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['firstName'].invalid">{{getErrorMessage(mainFormGroup.controls['firstName'])}}</mat-error>
+                        <mat-hint align="end">Enter First Name</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Last Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="lastName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['lastName'].invalid">{{getErrorMessage(mainFormGroup.controls['lastName'])}}</mat-error>
+                        <mat-hint align="end">Enter Last Name</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Date</mat-label>
+                        <input matInput [matDatepicker]="apicker4" formControlName="birthDate" [readonly]="true">
+                        <mat-datepicker-toggle matSuffix [for]="apicker4" disabled></mat-datepicker-toggle>
+                        <mat-datepicker #apicker4></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['birthDate'].invalid">{{getErrorMessage(mainFormGroup.controls['birthDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Date</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Date</mat-label>
+                        <input matInput [matDatepicker]="apicker5" formControlName="deathDate" [readonly]="true">
+                        <mat-datepicker-toggle matSuffix [for]="apicker5" disabled></mat-datepicker-toggle>
+                        <mat-datepicker #apicker5></mat-datepicker>
+                        <mat-error *ngIf="mainFormGroup.controls['deathDate'].invalid">{{getErrorMessage(mainFormGroup.controls['deathDate'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Date</mat-hint>
+                    </mat-form-field>
+                <input type="hidden" formControlName="iso3CntrRef">
+                <input type="hidden" formControlName="iso2CntrRef">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Birth Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="cCountryName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['cCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['cCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Birth Country</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+

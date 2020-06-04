@@ -1,0 +1,91 @@
+
+     <div fxLayout="row" fxLayoutAlign="flex-end space-around" style="margin-bottom: 12px;"> 
+        <label fxFlex fxLayoutAlign="flex-start space-around">{{caption}}</label>
+        <ng-template ngFor let-item [ngForOf]="contMenuItems">
+            <span fxFlex="1%"></span>  
+            <button mat-icon-button (click)="onContMenuItemClicked(item)" 
+                [matTooltip]="item.caption"> 
+                <mat-icon  [color]="item.iconColor" >{{item.iconName}}</mat-icon>
+            </button>     
+        </ng-template>            
+        <span fxFlex="1%"></span>
+     </div> 
+<div  *ngIf="eformMode == 1" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the Publisher</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="publisherId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['publisherId'].invalid">{{getErrorMessage(mainFormGroup.controls['publisherId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id of the Publisher</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Publisher Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="publisherName">
+                        <mat-error *ngIf="mainFormGroup.controls['publisherName'].invalid">{{getErrorMessage(mainFormGroup.controls['publisherName'])}}</mat-error>
+                        <mat-hint align="end">Enter Publisher Name</mat-hint>
+                    </mat-form-field>
+                <input type="hidden" formControlName="iso3CntrRef">
+                <input type="hidden" formControlName="iso2CntrRef">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Publisher Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="cCountryName" [readonly]="true">
+                        <button color="primary" mat-icon-button matSuffix (click)="cCountryNameSrchClck()" [disabled]="cCountryNameBttnDsnbl"  >
+                          <mat-icon>search</mat-icon>
+                        </button>
+                        <mat-error *ngIf="mainFormGroup.controls['cCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['cCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Publisher Country</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 2" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the Publisher</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="publisherId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['publisherId'].invalid">{{getErrorMessage(mainFormGroup.controls['publisherId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id of the Publisher</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Publisher Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="publisherName">
+                        <mat-error *ngIf="mainFormGroup.controls['publisherName'].invalid">{{getErrorMessage(mainFormGroup.controls['publisherName'])}}</mat-error>
+                        <mat-hint align="end">Enter Publisher Name</mat-hint>
+                    </mat-form-field>
+                <input type="hidden" formControlName="iso3CntrRef">
+                <input type="hidden" formControlName="iso2CntrRef">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Publisher Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="cCountryName" [readonly]="true">
+                        <button color="primary" mat-icon-button matSuffix (click)="cCountryNameSrchClck()" [disabled]="cCountryNameBttnDsnbl"  >
+                          <mat-icon>search</mat-icon>
+                        </button>
+                        <mat-error *ngIf="mainFormGroup.controls['cCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['cCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Publisher Country</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 3" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the Publisher</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="publisherId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['publisherId'].invalid">{{getErrorMessage(mainFormGroup.controls['publisherId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id of the Publisher</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Publisher Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="publisherName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['publisherName'].invalid">{{getErrorMessage(mainFormGroup.controls['publisherName'])}}</mat-error>
+                        <mat-hint align="end">Enter Publisher Name</mat-hint>
+                    </mat-form-field>
+                <input type="hidden" formControlName="iso3CntrRef">
+                <input type="hidden" formControlName="iso2CntrRef">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Publisher Country</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="cCountryName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['cCountryName'].invalid">{{getErrorMessage(mainFormGroup.controls['cCountryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Publisher Country</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+

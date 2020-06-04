@@ -1,0 +1,16 @@
+
+<!-- <h3 mat-dialog-title>{{data.title}}</h3> -->
+<div mat-dialog-content>
+    <app-lit-book-view-eform 
+        [caption]="data.title" 
+        [hidden-filter]="data.hiddenFilter"
+        [eform-control-model]="data.eformControlModel"
+        [eform-mode]="data.eformMode"
+        (after-submit)="onAfterSubmit($event)"
+    ></app-lit-book-view-eform>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()" cdkFocusInitial>Cancel</button>
+  <button mat-button (click)="onOk()">Ok</button>
+</div>
+

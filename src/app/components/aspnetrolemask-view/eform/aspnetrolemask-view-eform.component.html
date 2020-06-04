@@ -1,0 +1,376 @@
+
+     <div fxLayout="row" fxLayoutAlign="flex-end space-around" style="margin-bottom: 12px;"> 
+        <label fxFlex fxLayoutAlign="flex-start space-around">{{caption}}</label>
+        <ng-template ngFor let-item [ngForOf]="contMenuItems">
+            <span fxFlex="1%"></span>  
+            <button mat-icon-button (click)="onContMenuItemClicked(item)" 
+                [matTooltip]="item.caption"> 
+                <mat-icon  [color]="item.iconColor" >{{item.iconName}}</mat-icon>
+            </button>     
+        </ng-template>            
+        <span fxFlex="1%"></span>
+     </div> 
+<div  *ngIf="eformMode == 1" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Role Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="roleName">
+                        <mat-error *ngIf="mainFormGroup.controls['roleName'].invalid">{{getErrorMessage(mainFormGroup.controls['roleName'])}}</mat-error>
+                        <mat-hint align="end">Enter RoleName</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Role Description</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="roleDescription">
+                        <mat-error *ngIf="mainFormGroup.controls['roleDescription'].invalid">{{getErrorMessage(mainFormGroup.controls['roleDescription'])}}</mat-error>
+                        <mat-hint align="end">Enter Role Description</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask0</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask0">
+                        <mat-error *ngIf="mainFormGroup.controls['mask0'].invalid">{{getErrorMessage(mainFormGroup.controls['mask0'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask0</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask1</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask1">
+                        <mat-error *ngIf="mainFormGroup.controls['mask1'].invalid">{{getErrorMessage(mainFormGroup.controls['mask1'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask1</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask2</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask2">
+                        <mat-error *ngIf="mainFormGroup.controls['mask2'].invalid">{{getErrorMessage(mainFormGroup.controls['mask2'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask2</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask3</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask3">
+                        <mat-error *ngIf="mainFormGroup.controls['mask3'].invalid">{{getErrorMessage(mainFormGroup.controls['mask3'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask3</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask4</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask4">
+                        <mat-error *ngIf="mainFormGroup.controls['mask4'].invalid">{{getErrorMessage(mainFormGroup.controls['mask4'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask4</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask5</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask5">
+                        <mat-error *ngIf="mainFormGroup.controls['mask5'].invalid">{{getErrorMessage(mainFormGroup.controls['mask5'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask5</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask6</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask6">
+                        <mat-error *ngIf="mainFormGroup.controls['mask6'].invalid">{{getErrorMessage(mainFormGroup.controls['mask6'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask6</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask7</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask7">
+                        <mat-error *ngIf="mainFormGroup.controls['mask7'].invalid">{{getErrorMessage(mainFormGroup.controls['mask7'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask7</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask8</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask8">
+                        <mat-error *ngIf="mainFormGroup.controls['mask8'].invalid">{{getErrorMessage(mainFormGroup.controls['mask8'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask8</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask9</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask9">
+                        <mat-error *ngIf="mainFormGroup.controls['mask9'].invalid">{{getErrorMessage(mainFormGroup.controls['mask9'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask9</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>MaskA</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskA">
+                        <mat-error *ngIf="mainFormGroup.controls['maskA'].invalid">{{getErrorMessage(mainFormGroup.controls['maskA'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskA</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>MaskB</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskB">
+                        <mat-error *ngIf="mainFormGroup.controls['maskB'].invalid">{{getErrorMessage(mainFormGroup.controls['maskB'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskB</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>MaskC</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskC">
+                        <mat-error *ngIf="mainFormGroup.controls['maskC'].invalid">{{getErrorMessage(mainFormGroup.controls['maskC'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskC</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>MaskD</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskD">
+                        <mat-error *ngIf="mainFormGroup.controls['maskD'].invalid">{{getErrorMessage(mainFormGroup.controls['maskD'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskD</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="32" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Dask0</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="dask0">
+                        <mat-error *ngIf="mainFormGroup.controls['dask0'].invalid">{{getErrorMessage(mainFormGroup.controls['dask0'])}}</mat-error>
+                        <mat-hint align="end">Enter Dask0</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Dask1</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="dask1">
+                        <mat-error *ngIf="mainFormGroup.controls['dask1'].invalid">{{getErrorMessage(mainFormGroup.controls['dask1'])}}</mat-error>
+                        <mat-hint align="end">Enter Dask1</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Dask2</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="dask2">
+                        <mat-error *ngIf="mainFormGroup.controls['dask2'].invalid">{{getErrorMessage(mainFormGroup.controls['dask2'])}}</mat-error>
+                        <mat-hint align="end">Enter Dask2</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 2" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Role Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="roleName">
+                        <mat-error *ngIf="mainFormGroup.controls['roleName'].invalid">{{getErrorMessage(mainFormGroup.controls['roleName'])}}</mat-error>
+                        <mat-hint align="end">Enter RoleName</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Role Description</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="roleDescription">
+                        <mat-error *ngIf="mainFormGroup.controls['roleDescription'].invalid">{{getErrorMessage(mainFormGroup.controls['roleDescription'])}}</mat-error>
+                        <mat-hint align="end">Enter Role Description</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask0</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask0">
+                        <mat-error *ngIf="mainFormGroup.controls['mask0'].invalid">{{getErrorMessage(mainFormGroup.controls['mask0'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask0</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask1</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask1">
+                        <mat-error *ngIf="mainFormGroup.controls['mask1'].invalid">{{getErrorMessage(mainFormGroup.controls['mask1'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask1</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask2</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask2">
+                        <mat-error *ngIf="mainFormGroup.controls['mask2'].invalid">{{getErrorMessage(mainFormGroup.controls['mask2'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask2</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask3</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask3">
+                        <mat-error *ngIf="mainFormGroup.controls['mask3'].invalid">{{getErrorMessage(mainFormGroup.controls['mask3'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask3</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask4</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask4">
+                        <mat-error *ngIf="mainFormGroup.controls['mask4'].invalid">{{getErrorMessage(mainFormGroup.controls['mask4'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask4</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask5</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask5">
+                        <mat-error *ngIf="mainFormGroup.controls['mask5'].invalid">{{getErrorMessage(mainFormGroup.controls['mask5'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask5</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask6</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask6">
+                        <mat-error *ngIf="mainFormGroup.controls['mask6'].invalid">{{getErrorMessage(mainFormGroup.controls['mask6'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask6</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask7</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask7">
+                        <mat-error *ngIf="mainFormGroup.controls['mask7'].invalid">{{getErrorMessage(mainFormGroup.controls['mask7'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask7</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask8</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask8">
+                        <mat-error *ngIf="mainFormGroup.controls['mask8'].invalid">{{getErrorMessage(mainFormGroup.controls['mask8'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask8</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask9</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask9">
+                        <mat-error *ngIf="mainFormGroup.controls['mask9'].invalid">{{getErrorMessage(mainFormGroup.controls['mask9'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask9</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>MaskA</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskA">
+                        <mat-error *ngIf="mainFormGroup.controls['maskA'].invalid">{{getErrorMessage(mainFormGroup.controls['maskA'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskA</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>MaskB</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskB">
+                        <mat-error *ngIf="mainFormGroup.controls['maskB'].invalid">{{getErrorMessage(mainFormGroup.controls['maskB'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskB</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>MaskC</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskC">
+                        <mat-error *ngIf="mainFormGroup.controls['maskC'].invalid">{{getErrorMessage(mainFormGroup.controls['maskC'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskC</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>MaskD</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskD">
+                        <mat-error *ngIf="mainFormGroup.controls['maskD'].invalid">{{getErrorMessage(mainFormGroup.controls['maskD'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskD</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="32" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Dask0</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="dask0">
+                        <mat-error *ngIf="mainFormGroup.controls['dask0'].invalid">{{getErrorMessage(mainFormGroup.controls['dask0'])}}</mat-error>
+                        <mat-hint align="end">Enter Dask0</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Dask1</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="dask1">
+                        <mat-error *ngIf="mainFormGroup.controls['dask1'].invalid">{{getErrorMessage(mainFormGroup.controls['dask1'])}}</mat-error>
+                        <mat-hint align="end">Enter Dask1</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Dask2</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="dask2">
+                        <mat-error *ngIf="mainFormGroup.controls['dask2'].invalid">{{getErrorMessage(mainFormGroup.controls['dask2'])}}</mat-error>
+                        <mat-hint align="end">Enter Dask2</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 3" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Role Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="roleName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['roleName'].invalid">{{getErrorMessage(mainFormGroup.controls['roleName'])}}</mat-error>
+                        <mat-hint align="end">Enter RoleName</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Role Description</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="roleDescription" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['roleDescription'].invalid">{{getErrorMessage(mainFormGroup.controls['roleDescription'])}}</mat-error>
+                        <mat-hint align="end">Enter Role Description</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask0</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask0" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['mask0'].invalid">{{getErrorMessage(mainFormGroup.controls['mask0'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask0</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask1</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask1" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['mask1'].invalid">{{getErrorMessage(mainFormGroup.controls['mask1'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask1</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask2</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask2" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['mask2'].invalid">{{getErrorMessage(mainFormGroup.controls['mask2'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask2</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask3</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask3" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['mask3'].invalid">{{getErrorMessage(mainFormGroup.controls['mask3'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask3</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask4</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask4" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['mask4'].invalid">{{getErrorMessage(mainFormGroup.controls['mask4'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask4</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask5</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask5" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['mask5'].invalid">{{getErrorMessage(mainFormGroup.controls['mask5'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask5</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask6</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask6" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['mask6'].invalid">{{getErrorMessage(mainFormGroup.controls['mask6'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask6</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask7</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask7" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['mask7'].invalid">{{getErrorMessage(mainFormGroup.controls['mask7'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask7</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask8</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask8" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['mask8'].invalid">{{getErrorMessage(mainFormGroup.controls['mask8'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask8</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Mask9</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="mask9" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['mask9'].invalid">{{getErrorMessage(mainFormGroup.controls['mask9'])}}</mat-error>
+                        <mat-hint align="end">Enter Mask9</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>MaskA</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskA" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['maskA'].invalid">{{getErrorMessage(mainFormGroup.controls['maskA'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskA</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="15" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>MaskB</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskB" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['maskB'].invalid">{{getErrorMessage(mainFormGroup.controls['maskB'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskB</mat-hint>
+                    </mat-form-field>
+                <hr fxFlex="100"/>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>MaskC</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskC" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['maskC'].invalid">{{getErrorMessage(mainFormGroup.controls['maskC'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskC</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>MaskD</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="maskD" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['maskD'].invalid">{{getErrorMessage(mainFormGroup.controls['maskD'])}}</mat-error>
+                        <mat-hint align="end">Enter MaskD</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="32" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Dask0</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="dask0" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['dask0'].invalid">{{getErrorMessage(mainFormGroup.controls['dask0'])}}</mat-error>
+                        <mat-hint align="end">Enter Dask0</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Dask1</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="dask1" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['dask1'].invalid">{{getErrorMessage(mainFormGroup.controls['dask1'])}}</mat-error>
+                        <mat-hint align="end">Enter Dask1</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="19" fxFlex.gt-sm="32" fxFlex.gt-xs="49" fxFlex="99">
+                        <mat-label>Dask2</mat-label>
+                        <input toBinaryFormatter matInput placeholder="Placeholder..." formControlName="dask2" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['dask2'].invalid">{{getErrorMessage(mainFormGroup.controls['dask2'])}}</mat-error>
+                        <mat-hint align="end">Enter Dask2</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+

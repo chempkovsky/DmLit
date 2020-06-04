@@ -1,0 +1,100 @@
+
+
+<app-web-service-filter 
+    [caption]="caption" 
+    (on-back-btn)="onBackBtnMd($event)"
+    [show-back-btn]="showBackBtn"
+    (on-apply-filter)="onApplyFilter($event)" 
+    [show-add-flt-item]="showAddFltItem"  
+    [max-height]="filterMaxHeight"  
+    [filter-defs]="filterDefs" [hidden-filter]="hiddenFilter" [show-filter]="showFilter"
+    [cont-menu-items]="contMenuItems"
+    (on-cont-menu-item-click)="onContMenuItemClicked($event)"
+    ></app-web-service-filter>
+<mat-progress-bar *ngIf="inQuery" mode="query"></mat-progress-bar>
+<div [style.maxHeight.px]="maxHeightX" [style.overflow-y]="ovrflw" class="mat-tbl-container">
+
+<mat-radio-group>
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSort($event)"  >
+
+  <ng-container matColumnDef="selectAction" sticky>
+    <th mat-header-cell *matHeaderCellDef> </th>
+    <td mat-cell *matCellDef="let e">
+      <mat-radio-button (change)="onSelectRow(e)" [value]="e" [checked]="e === currentRow" ></mat-radio-button>
+    </td>
+  </ng-container>
+
+    <ng-container matColumnDef="iso3" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Iso 3 </th>
+        <td mat-cell *matCellDef="let e"> {{e.iso3  }} </td>
+    </ng-container>
+    <ng-container matColumnDef="iso2" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Iso 2 </th>
+        <td mat-cell *matCellDef="let e"> {{e.iso2  }} </td>
+    </ng-container>
+    <ng-container matColumnDef="countryName" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Country </th>
+        <td mat-cell *matCellDef="let e"> {{e.countryName  }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="menuAction" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef>
+            <button mat-icon-button [matMenuTriggerFor]="tblMenu" >
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #tblMenu="matMenu">
+              <button mat-menu-item  (click)="onFilter()">
+                <mat-icon>refresh</mat-icon>
+                <span>Refresh table</span>
+              </button>
+<!--
+              <button mat-menu-item *ngIf="canAdd" (click)="onAdd()">
+                <mat-icon color="primary">create</mat-icon>
+                <span>Add Item</span>
+              </button>
+-->
+              <button mat-menu-item  (click)="onSettings()">
+                <mat-icon>settings</mat-icon>
+                <span>Table columns</span>
+              </button>
+              <button mat-menu-item *ngFor="let m of tableCommands;"  [disabled]="!m.enabled" (click)="tableCommand(m.id)">
+                <mat-icon color="{{m.iconColor}}">{{m.iconName}}</mat-icon>
+                <span>{{m.caption}}</span>
+              </button>
+            </mat-menu>            
+        </th>
+        <td mat-cell *matCellDef="let e">
+            <button mat-icon-button [matMenuTriggerFor]="rowMenu" >
+                <mat-icon>more_vert</mat-icon>
+            </button>
+
+            <mat-menu #rowMenu="matMenu">
+<!--
+              <button mat-menu-item  *ngIf="canUpdate" (click)="onEdit(e)">
+                <mat-icon color="primary">edit</mat-icon>
+                <span>Modify</span>
+              </button>
+              <button mat-menu-item *ngIf="canDelete" (click)="onDelete(e)">
+                <mat-icon color="warn">delete_forever</mat-icon>
+                <span>Delete</span>
+              </button>
+-->
+              <button mat-menu-item *ngFor="let m of rowCommands;"  [disabled]="!m.enabled" (click)="rowCommand(e, m.id)">
+                <mat-icon color="{{m.iconColor}}">{{m.iconName}}</mat-icon>
+                <span>{{m.caption}}</span>
+              </button>
+
+            </mat-menu>  
+          
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</mat-radio-group>
+</div>
+<mat-paginator (page)="onPage($event)"  [pageIndex]="currentPageIndex" [pageSize]="currentPageSize" [length]="matPaginatorLen" [pageSize]="matPaginatorPageSize" [pageSizeOptions]="matPaginatorPageSizeOptions"> </mat-paginator> 
+
+

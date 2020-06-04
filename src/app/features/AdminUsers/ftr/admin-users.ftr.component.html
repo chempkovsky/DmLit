@@ -1,0 +1,55 @@
+
+
+<div class="dashboard-grid-container">
+  <h2 class="mat-h2">Dashboard for AdminUsers</h2>
+<!-- please remove "style" this was added for demonstration purposes only -->
+  <mat-grid-list cols="2" rowHeight="390px" >
+
+    <mat-grid-tile [colspan]="colSpan[0][0]" [rowspan]="rowSpan[0][0]" *ngIf="isVisible[0]">
+      <div class="dashboard-item-container">
+        <mat-card>
+            <app-aspnetrole-view-lform
+                [cont-menu-items]="contMenuItems[0]"
+                (on-cont-menu-item-click)="onContMenuItemClicked($event)"
+                [max-height]="maxHeight[0][0]"  
+                [filter-max-height]="filterMaxHeight[0][0]"  
+            >
+            </app-aspnetrole-view-lform>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile [colspan]="colSpan[1][0]" [rowspan]="rowSpan[1][0]" *ngIf="isVisible[1]">
+      <div class="dashboard-item-container">
+        <mat-card>
+            <app-aspnetuser-view-lform
+                [cont-menu-items]="contMenuItems[1]"
+                (on-cont-menu-item-click)="onContMenuItemClicked($event)"
+                [max-height]="maxHeight[1][0]"  
+                [filter-max-height]="filterMaxHeight[1][0]"  
+            >
+            </app-aspnetuser-view-lform>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+
+    <mat-grid-tile [colspan]="colSpan[2][0]" [rowspan]="rowSpan[2][0]" *ngIf="isVisible[2]">
+      <div class="dashboard-item-container">
+        <mat-card>
+            <app-aspnetuser-view-o2m
+                [cont-menu-items]="contMenuItems[2]"
+                (on-cont-menu-item-click)="onContMenuItemClicked($event)"
+                [max-height]="maxHeight[2][0]"  
+                [filter-max-height]="filterMaxHeight[2][0]"  
+            >
+            </app-aspnetuser-view-o2m>
+        </mat-card>
+      </div>
+    </mat-grid-tile>
+
+
+  </mat-grid-list>
+</div>
+

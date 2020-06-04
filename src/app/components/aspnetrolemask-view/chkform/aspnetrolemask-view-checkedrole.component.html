@@ -1,0 +1,64 @@
+
+<app-aspnetrolemask-view-lform 
+    (selected-row)="onSelectedRow($event)"
+    [hidden-filter] = "hiddenFilter" 
+    [show-filter]="showFilter"
+    [show-add-flt-item]="showAddFltItem"
+    [can-add]= "canAdd" 
+    [can-update]= "canUpdate" 
+    [can-delete]= "canDelete"
+    [cont-menu-items]="contMenuItems"
+    (on-cont-menu-item-click)="onContMenuItemClicked($event)"
+    [max-height]="maxHeight"  
+    [filter-max-height]="filterMaxHeight"  
+></app-aspnetrolemask-view-lform>
+
+<mat-expansion-panel >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Role details
+      </mat-panel-title>
+      <mat-panel-description>
+          Bit masks of the selected role
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+        <app-aspnetrolemask-view-eform 
+            [eform-mode] = 'eformMode'
+            [eform-control-model] = 'eformControlModel'
+        ></app-aspnetrolemask-view-eform>
+</mat-expansion-panel>
+
+
+
+
+<mat-tab-group>
+    <mat-tab label="Models">
+        <app-aspnetmodel-view-checkedmodel 
+            [max-height]="maxHeight"  
+            [filter-max-height]="filterMaxHeight"  
+            [show-filter]="showFilter"
+            [show-add-flt-item]="showAddFltItem"
+
+            [permissions]="permissions"
+            (out-permission)="outPermission($event)"
+            [cont-menu-items]="saveRole"
+            (on-cont-menu-item-click)="onSaveRole($event)"
+        ></app-aspnetmodel-view-checkedmodel>
+    </mat-tab>
+    <mat-tab label="Dashboards">
+        <app-aspnetdashboard-view-checkeddashboard 
+            [max-height]="maxHeight"  
+            [filter-max-height]="filterMaxHeight"  
+            [show-filter]="showFilter"
+            [show-add-flt-item]="showAddFltItem"
+
+            [permissions]="permissions"
+            (out-permission)="outPermission($event)"
+            [cont-menu-items]="saveRole"
+            (on-cont-menu-item-click)="onSaveRole($event)"
+        ></app-aspnetdashboard-view-checkeddashboard>
+    </mat-tab>
+</mat-tab-group>
+
+
+

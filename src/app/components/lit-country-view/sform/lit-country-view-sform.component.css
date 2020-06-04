@@ -1,0 +1,31 @@
+
+.mat-column-selectAction {
+    width: 10px !important;
+    padding-right: 4px;   
+    border-right: 1px solid #e0e0e0;
+}
+.mat-column-menuAction {
+    width: 10px !important;
+    border-left: 1px solid #e0e0e0;
+}
+.mat-tbl-container {
+    overflow-x: auto;
+}
+table.mat-table {
+    width: 100%;
+}
+th.mat-header-cell {
+    padding-left: 4px; 
+}
+td.mat-cell {
+    padding-left: 4px; 
+}
+tr.mat-header-row {
+    height: 15px !important;
+}
+tr.mat-row {
+    height: 15px !important;
+} 
+button.mat-icon-button {
+    height: 15px !important;
+}

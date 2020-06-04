@@ -1,0 +1,12 @@
+
+<h3 mat-dialog-title>Columns To Show</h3>
+<div mat-dialog-content>
+    <app-column-selector 
+        [colums-to-select]="data"
+    ></app-column-selector>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()" cdkFocusInitial>Cancel</button>
+  <button mat-button (click)="onOk()">Ok</button>
+</div>
+

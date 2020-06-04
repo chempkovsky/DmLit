@@ -1,0 +1,40 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-subtitle>{{title}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content >
+
+    <div [formGroup]="registerFormGroup" (ngSubmit)="doSubmit()" fxLayout="column wrap">
+        <mat-form-field  [appearance]="appearance">
+            <mat-label>Email</mat-label>
+            <input  matInput placeholder="Email..." formControlName="email">
+            <mat-error *ngIf="registerFormGroup.controls['email'].invalid">{{getErrorMessage(registerFormGroup.controls['email'])}}</mat-error>
+            <mat-hint align="end">Enter Email</mat-hint>
+        </mat-form-field>
+        <mat-form-field  [appearance]="appearance" >
+            <mat-label>Password</mat-label>
+            <input  matInput placeholder="Password..." formControlName="password" [type]="pwdhide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="pwdhide = !pwdhide">
+                <mat-icon>{{pwdhide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="registerFormGroup.controls['password'].invalid">{{getErrorMessage(registerFormGroup.controls['password'])}}</mat-error>
+            <mat-hint align="end">Enter Password</mat-hint>
+        </mat-form-field>
+        <mat-form-field  [appearance]="appearance">
+            <mat-label>Confirm Password</mat-label>
+            <input  matInput placeholder="Confirm Password..." formControlName="confirmPassword" [type]="cnfPwdhide ? 'password' : 'text'">
+            <button mat-icon-button matSuffix (click)="cnfPwdhide = !cnfPwdhide">
+                <mat-icon>{{cnfPwdhide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="registerFormGroup.controls['confirmPassword'].invalid">{{getErrorMessage(registerFormGroup.controls['confirmPassword'])}}</mat-error>
+            <mat-hint align="end">Confirm Password</mat-hint>
+        </mat-form-field>
+    </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="onCancel()" cdkFocusInitial>Cancel</button>
+        <button mat-button (click)="doSubmit()">Ok</button>
+    </mat-card-actions>
+</mat-card>

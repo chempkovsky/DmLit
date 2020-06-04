@@ -1,0 +1,32 @@
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-subtitle>{{title}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content >
+
+        <div [formGroup]="loginFormGroup" (ngSubmit)="doSubmit()" fxLayout="column wrap">
+            <mat-form-field  [appearance]="appearance">
+                <mat-label>User name</mat-label>
+                <input  matInput placeholder="User name..." formControlName="username">
+                <mat-error *ngIf="loginFormGroup.controls['username'].invalid">{{getErrorMessage(loginFormGroup.controls['username'])}}</mat-error>
+                <mat-hint align="end">Enter User name</mat-hint>
+            </mat-form-field>
+            <mat-form-field  [appearance]="appearance" >
+                <mat-label>Password</mat-label>
+                <input  matInput placeholder="Password..." formControlName="password" [type]="pwdhide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="pwdhide = !pwdhide">
+                    <mat-icon>{{pwdhide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="loginFormGroup.controls['password'].invalid">{{getErrorMessage(loginFormGroup.controls['password'])}}</mat-error>
+                <mat-hint align="end">Enter Password</mat-hint>
+            </mat-form-field>
+        </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="onCancel()" cdkFocusInitial>Cancel</button>
+        <button mat-button (click)="doSubmit()">Ok</button>
+    </mat-card-actions>
+</mat-card>
+

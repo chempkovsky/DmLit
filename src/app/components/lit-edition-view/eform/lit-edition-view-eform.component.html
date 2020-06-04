@@ -1,0 +1,61 @@
+
+     <div fxLayout="row" fxLayoutAlign="flex-end space-around" style="margin-bottom: 12px;"> 
+        <label fxFlex fxLayoutAlign="flex-start space-around">{{caption}}</label>
+        <ng-template ngFor let-item [ngForOf]="contMenuItems">
+            <span fxFlex="1%"></span>  
+            <button mat-icon-button (click)="onContMenuItemClicked(item)" 
+                [matTooltip]="item.caption"> 
+                <mat-icon  [color]="item.iconColor" >{{item.iconName}}</mat-icon>
+            </button>     
+        </ng-template>            
+        <span fxFlex="1%"></span>
+     </div> 
+<div  *ngIf="eformMode == 1" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the edition</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="editionId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['editionId'].invalid">{{getErrorMessage(mainFormGroup.controls['editionId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id of the edition</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Name of the edition</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="editionName">
+                        <mat-error *ngIf="mainFormGroup.controls['editionName'].invalid">{{getErrorMessage(mainFormGroup.controls['editionName'])}}</mat-error>
+                        <mat-hint align="end">Enter the Name of the edition</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 2" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the edition</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="editionId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['editionId'].invalid">{{getErrorMessage(mainFormGroup.controls['editionId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id of the edition</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Name of the edition</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="editionName">
+                        <mat-error *ngIf="mainFormGroup.controls['editionName'].invalid">{{getErrorMessage(mainFormGroup.controls['editionName'])}}</mat-error>
+                        <mat-hint align="end">Enter the Name of the edition</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 3" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Id of the edition</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="editionId" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['editionId'].invalid">{{getErrorMessage(mainFormGroup.controls['editionId'])}}</mat-error>
+                        <mat-hint align="end">Enter Id of the edition</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="49" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Name of the edition</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="editionName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['editionName'].invalid">{{getErrorMessage(mainFormGroup.controls['editionName'])}}</mat-error>
+                        <mat-hint align="end">Enter the Name of the edition</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+

@@ -1,0 +1,55 @@
+
+
+<app-web-service-filter 
+    (on-apply-filter)="onApplyFilter($event)" 
+    [show-add-flt-item]="showAddFltItem"  
+    [max-height]="filterMaxHeight"  
+    [filter-defs]="filterDefs" 
+    [show-filter]="showFilter"
+    [cont-menu-items]="contMenuItems"
+    (on-cont-menu-item-click)="onContMenuItemClicked($event)"
+    ></app-web-service-filter>
+<mat-progress-bar *ngIf="inQuery" mode="query"></mat-progress-bar>
+<div [style.maxHeight.px]="maxHeightX" [style.overflow-y]="ovrflw" class="mat-tbl-container">
+
+<table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSort($event)"  >
+
+
+    <ng-container matColumnDef="modelPk" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Id </th>
+        <td mat-cell *matCellDef="let e"> {{e.modelPk  }} </td>
+    </ng-container>
+    <ng-container matColumnDef="modelName" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Name </th>
+        <td mat-cell *matCellDef="let e"> {{e.modelName  }} </td>
+    </ng-container>
+    <ng-container matColumnDef="modelDescription" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header > Description </th>
+        <td mat-cell *matCellDef="let e"> {{e.modelDescription  }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="addPrm" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef> Add Perm </th>
+      <td mat-cell *matCellDef="let element"> <mat-checkbox [disabled]="isDisabled" [(ngModel)]="element.addPrm" (change)="onChecked($event, element.modelPk, 8)"></mat-checkbox></td>
+    </ng-container>
+    <ng-container matColumnDef="updPrm" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef> Upd Perm </th>
+      <td mat-cell *matCellDef="let element"> <mat-checkbox [disabled]="isDisabled" [(ngModel)]="element.updPrm" (change)="onChecked($event, element.modelPk, 4)"></mat-checkbox></td>
+    </ng-container>
+    <ng-container matColumnDef="delPrm" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef> Del Perm </th>
+      <td mat-cell *matCellDef="let element"> <mat-checkbox [disabled]="isDisabled" [(ngModel)]="element.delPrm" (change)="onChecked($event, element.modelPk, 2)"></mat-checkbox></td>
+    </ng-container>
+    <ng-container matColumnDef="selPrm" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef> Sel Perm </th>
+      <td mat-cell *matCellDef="let element"> <mat-checkbox [disabled]="isDisabled" [(ngModel)]="element.selPrm" (change)="onChecked($event, element.modelPk, 1)"></mat-checkbox></td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+</div>
+<mat-paginator (page)="onPage($event)"  [pageIndex]="currentPageIndex" [pageSize]="currentPageSize" [length]="matPaginatorLen" [pageSize]="matPaginatorPageSize" [pageSizeOptions]="matPaginatorPageSizeOptions"> </mat-paginator> 
+
+

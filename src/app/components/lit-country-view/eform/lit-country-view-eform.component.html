@@ -1,0 +1,79 @@
+
+     <div fxLayout="row" fxLayoutAlign="flex-end space-around" style="margin-bottom: 12px;"> 
+        <label fxFlex fxLayoutAlign="flex-start space-around">{{caption}}</label>
+        <ng-template ngFor let-item [ngForOf]="contMenuItems">
+            <span fxFlex="1%"></span>  
+            <button mat-icon-button (click)="onContMenuItemClicked(item)" 
+                [matTooltip]="item.caption"> 
+                <mat-icon  [color]="item.iconColor" >{{item.iconName}}</mat-icon>
+            </button>     
+        </ng-template>            
+        <span fxFlex="1%"></span>
+     </div> 
+<div  *ngIf="eformMode == 1" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Iso 3 code</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="iso3">
+                        <mat-error *ngIf="mainFormGroup.controls['iso3'].invalid">{{getErrorMessage(mainFormGroup.controls['iso3'])}}</mat-error>
+                        <mat-hint align="end">Enter Iso 3 code</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Iso 2 code</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="iso2">
+                        <mat-error *ngIf="mainFormGroup.controls['iso2'].invalid">{{getErrorMessage(mainFormGroup.controls['iso2'])}}</mat-error>
+                        <mat-hint align="end">Enter Iso 2 code</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Country Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="countryName">
+                        <mat-error *ngIf="mainFormGroup.controls['countryName'].invalid">{{getErrorMessage(mainFormGroup.controls['countryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Country Name</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 2" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Iso 3 code</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="iso3" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['iso3'].invalid">{{getErrorMessage(mainFormGroup.controls['iso3'])}}</mat-error>
+                        <mat-hint align="end">Enter Iso 3 code</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Iso 2 code</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="iso2" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['iso2'].invalid">{{getErrorMessage(mainFormGroup.controls['iso2'])}}</mat-error>
+                        <mat-hint align="end">Enter Iso 2 code</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Country Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="countryName">
+                        <mat-error *ngIf="mainFormGroup.controls['countryName'].invalid">{{getErrorMessage(mainFormGroup.controls['countryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Country Name</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+<div  *ngIf="eformMode == 3" [formGroup]="mainFormGroup" (ngSubmit)="doSubmit()" fxLayout="row wrap" fxLayoutAlign="space-between" style="margin: 0 15px;">
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="99" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Iso 3 code</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="iso3" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['iso3'].invalid">{{getErrorMessage(mainFormGroup.controls['iso3'])}}</mat-error>
+                        <mat-hint align="end">Enter Iso 3 code</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Iso 2 code</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="iso2" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['iso2'].invalid">{{getErrorMessage(mainFormGroup.controls['iso2'])}}</mat-error>
+                        <mat-hint align="end">Enter Iso 2 code</mat-hint>
+                    </mat-form-field>
+                    <mat-form-field  [appearance]="appearance" fxFlex.gt-md="32" fxFlex.gt-sm="49" fxFlex.gt-xs="99" fxFlex="99">
+                        <mat-label>Country Name</mat-label>
+                        <input  matInput placeholder="Placeholder..." formControlName="countryName" [readonly]="true">
+                        <mat-error *ngIf="mainFormGroup.controls['countryName'].invalid">{{getErrorMessage(mainFormGroup.controls['countryName'])}}</mat-error>
+                        <mat-hint align="end">Enter Country Name</mat-hint>
+                    </mat-form-field>
+ 
+</div>
+
+

@@ -1,0 +1,22 @@
+
+<mat-card>
+<!--     <mat-card-header>
+        <mat-card-subtitle>{{title}}</mat-card-subtitle>
+    </mat-card-header> -->
+    <mat-card-content>
+        <app-lit-edition-view-eform 
+            [caption]="title" 
+            [hidden-filter]="hiddenFilter"
+            [eform-control-model]="eformControlModel"
+            [eform-mode]="eformMode"
+            (after-submit)="onAfterSubmit($event)"
+            [cont-menu-items]="contMenuItems"
+            (on-cont-menu-item-click)="onContMenuItemClicked($event)"
+        ></app-lit-edition-view-eform>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="onCancel()" cdkFocusInitial>Cancel</button>
+      <button mat-button (click)="onOk()">Ok</button>
+    </mat-card-actions>
+</mat-card>
+

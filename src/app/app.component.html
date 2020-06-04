@@ -1,0 +1,75 @@
+
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+        [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+        [mode]="(isHandset$ | async) ? 'over' : 'side'"
+        [opened]="(isHandset$ | async) === false">
+      <mat-toolbar>Menu</mat-toolbar>
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/home']" routerLinkActive="active"> <mat-icon>home</mat-icon> </a> 
+        <a mat-list-item [routerLink]="['/adminusers']" routerLinkActive="active">Admin: Users </a> 
+        <a mat-list-item [routerLink]="['/adminroles']" routerLinkActive="active">Admin: Roles </a> 
+        <a mat-list-item [routerLink]="['/rdialect']" routerLinkActive="active">R-Dialect </a> 
+        <a mat-list-item [routerLink]="['/ddialect']" routerLinkActive="active">D-Dialect </a> 
+        <a mat-list-item [routerLink]="['/rbook']" routerLinkActive="active">R-Book </a> 
+        <a mat-list-item [routerLink]="['/dbook']" routerLinkActive="active">D-Book </a> 
+        <a mat-list-item [routerLink]="['/rmanuscript']" routerLinkActive="active">R-Manuscript </a> 
+        <a mat-list-item [routerLink]="['/dmanuscript']" routerLinkActive="active">D-Manuscript </a> 
+        <a mat-list-item [routerLink]="['/rpublisher']" routerLinkActive="active">R-Publisher </a> 
+        <a mat-list-item [routerLink]="['/dpublisher']" routerLinkActive="active">D-Publisher </a> 
+        <a mat-list-item [routerLink]="['/rauthor']" routerLinkActive="active">R-Author </a> 
+        <a mat-list-item [routerLink]="['/dauthor']" routerLinkActive="active">D-Author </a> 
+        <a mat-list-item [routerLink]="['/redition']" routerLinkActive="active">R-Edition </a> 
+        <a mat-list-item [routerLink]="['/dedition']" routerLinkActive="active">D-Edition </a> 
+        <a mat-list-item [routerLink]="['/dgenre']" routerLinkActive="active">D-Genre </a> 
+        <a mat-list-item [routerLink]="['/rgenre']" routerLinkActive="active">R-Genre </a> 
+        <a mat-list-item [routerLink]="['/dcountry']" routerLinkActive="active">D-Country </a> 
+        <a mat-list-item [routerLink]="['/rcountry']" routerLinkActive="active">R-Country </a>
+<!--
+        <a mat-list-item [routerLink]="['/admin1feature']" routerLinkActive="active">Admin1</a> 
+-->
+        
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content style="background-color: lavender">
+      <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button
+              type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="drawer.toggle()"
+              *ngIf="isHandset$ | async">
+              <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <span>{{apptitle}}</span>
+            <span fxFlex="1 1 auto"></span>
+            <label>{{ userName }}</label>
+            <button mat-icon-button [matMenuTriggerFor]="authMainMenu" >
+              <mat-icon>settings</mat-icon>
+            </button>
+            <mat-menu #authMainMenu="matMenu">
+              <button mat-menu-item [routerLink]="['/authentication/login']">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Sign in</span>
+              </button>
+              <button mat-menu-item  [routerLink]="['/authentication/logout']">
+                <mat-icon>link_off</mat-icon>
+                <span>Sign out</span>
+              </button>
+              <button mat-menu-item  [routerLink]="['/authentication/register']">
+                <mat-icon>person_add</mat-icon>
+                <span>Registration</span>
+              </button>
+              <button mat-menu-item  [routerLink]="['/authentication/changepassword']">
+                <mat-icon>edit</mat-icon>
+                <span>Change Password</span>
+              </button>
+            </mat-menu>
+        </mat-toolbar-row>
+      </mat-toolbar>
+
+         <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>

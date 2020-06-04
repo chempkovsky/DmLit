@@ -1,0 +1,12 @@
+
+.home-container {
+    display: flex;
+    height: calc(93vh);
+    align-items: center;
+    justify-content: center;
+}
+
+.home-item-container {
+    width: 380px;
+    height: 70%; 
+}
